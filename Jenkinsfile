@@ -23,10 +23,10 @@ pipeline {
         always { 
             junit testResults: '**/target/surefire-reports/TEST-*.xml' 
             recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()] 
-            recordIssues enabledForFailure: true, tools: checkStyle(pattern: '**/checkstyle-result.xml') 
-            recordIssues enabledForFailure: true, tools: spotBugs(pattern: '**/target/findbugsXml.xml') 
-            recordIssues enabledForFailure: true, tools: cpd(pattern: '**/target/cpd.xml') 
-            recordIssues enabledForFailure: true, tools: pmdParser(pattern: '**/target/pmd.xml') 
+            recordIssues enabledForFailure: true, tool: checkStyle(pattern: '**/checkstyle-result.xml') 
+            recordIssues enabledForFailure: true, tool: spotBugs(pattern: '**/target/findbugsXml.xml') 
+            recordIssues enabledForFailure: true, tool: cpd(pattern: '**/target/cpd.xml') 
+            recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml') 
         } 
     } 
 } 
