@@ -3,7 +3,7 @@ pipeline {
     stages { 
         stage ('Checkout') { 
             steps { 
-                git branch:'master', url: 'https://github.com/heyaaronhere/vulnado.git' 
+                git branch:'master', url: 'https://github.com/ScaleSec/vulnado.git' 
             } 
         } 
          
@@ -24,9 +24,9 @@ pipeline {
             junit testResults: '**/target/surefire-reports/TEST-*.xml' 
             recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()] 
             recordIssues enabledForFailure: true, tools: checkStyle() 
-            recordIssues enabledForFailure: true, tools: spotBugs(pattern:'**/target/findbugsXml.xml') 
-            recordIssues enabledForFailure: true, tools: cpd(pattern:'**/target/cpd.xml') 
-            recordIssues enabledForFailure: true, tools: pmdParser(pattern:'**/target/pmd.xml') 
+            recordIssues enabledForFailure: true, tools: spotBugs(pattern: '**/target/findbugsXml.xml') 
+            recordIssues enabledForFailure: true, tools: cpd(pattern: '**/target/cpd.xml') 
+            recordIssues enabledForFailure: true, tools: pmdParser(pattern: '**/target/pmd.xml') 
         } 
     } 
-}
+} 
